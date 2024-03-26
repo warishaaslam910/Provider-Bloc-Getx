@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/CartPage.dart';
 
 import '../pages/CategoryPage.dart';
 

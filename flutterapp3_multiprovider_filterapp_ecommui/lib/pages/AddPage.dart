@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/HomePage.dart';
 
 class AddPage extends StatefulWidget {
   const AddPage({super.key});
@@ -10,6 +11,7 @@ class AddPage extends StatefulWidget {
 class _AddPageState extends State<AddPage> {
   var productnamecontroller = TextEditingController();
   var productpricecontroller = TextEditingController();
+  var productcategory = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class _AddPageState extends State<AddPage> {
                   Padding(
                     padding: EdgeInsets.only(left: 30),
                     child: Text(
-                      "My Blog",
+                      "Add Products",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 23,
@@ -35,7 +37,9 @@ class _AddPageState extends State<AddPage> {
                   ),
                   ////////////////////////////////////// Post btn ////////////////////////////
                   InkWell(
-                    onTap: () async {},
+                    onTap: () async {
+                      HomePage();
+                    },
                     child: Text(
                       "POST",
                       style: TextStyle(color: Colors.white, fontSize: 18),
@@ -90,6 +94,28 @@ class _AddPageState extends State<AddPage> {
                 children: [
                   SizedBox(
                     height: 12,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: TextField(
+                      controller: productpricecontroller,
+                      minLines: 2,
+                      maxLines: 20,
+                      decoration: InputDecoration(
+                        labelStyle: TextStyle(
+                          color: Color(0xFF4C53A5),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2, color: Colors.grey),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 2, color: Color(0xFF4C53A5)),
+                        ),
+                        labelText: "Category",
+                        hintText: "Enter Category",
+                      ),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(12.0),

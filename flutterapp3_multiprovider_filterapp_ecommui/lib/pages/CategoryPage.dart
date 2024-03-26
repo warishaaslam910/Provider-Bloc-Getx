@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/ItemsWidget.dart';
 import '../widgets/RangeSliderWidget.dart';
+/////////range according to category
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});

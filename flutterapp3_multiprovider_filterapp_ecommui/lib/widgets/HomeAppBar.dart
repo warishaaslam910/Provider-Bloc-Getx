@@ -17,11 +17,18 @@ class _HomeAppBarState extends State<HomeAppBar> {
       padding: EdgeInsets.all(25),
       child: Row(
         children: [
-          Icon(
-            Icons.sort,
-            size: 30,
-            color: Color(0xFF4C53A5),
-          ),
+          Builder(builder: (BuildContext context) {
+            return InkWell(
+              onTap: () {
+                Scaffold.of(context).openDrawer();
+              },
+              child: Icon(
+                Icons.sort,
+                size: 30,
+                color: Color(0xFF4C53A5),
+              ),
+            );
+          }),
           Padding(
             padding: EdgeInsets.only(
               left: 20,

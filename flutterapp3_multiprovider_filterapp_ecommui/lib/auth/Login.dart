@@ -2,8 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp3_multiprovider_filterapp_ecommui/Api.dart';
-import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/CartPage.dart';
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/auth/Account_auth.dart';
 
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/Mode.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -24,7 +23,7 @@ class _LoginState extends State<Login> {
         print('\nUser: ${user.additionalUserInfo}');
 
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => const Mode()));
+            context, MaterialPageRoute(builder: (context) => Account_auth()));
       }
     });
   }

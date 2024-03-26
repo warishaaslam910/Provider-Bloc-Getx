@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/HomePage.dart';
-import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/Mode.dart';
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/auth/Account_auth.dart';
 
 import '../auth/Login.dart';
 
@@ -25,7 +24,7 @@ class _SplashState extends State<Splash> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => HomePage(),
+              builder: (context) => Account_auth(),
             ));
       });
     } else {
