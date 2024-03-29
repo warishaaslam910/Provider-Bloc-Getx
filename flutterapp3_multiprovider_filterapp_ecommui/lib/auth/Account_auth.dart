@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/Api.dart';
 
 class Account_auth extends StatefulWidget {
   const Account_auth({super.key});
@@ -50,7 +51,9 @@ class _Account_authState extends State<Account_auth> {
                     backgroundColor: const Color(0xFF4C53A5),
                     shape: const StadiumBorder(),
                     elevation: 1),
-                onPressed: () {},
+                onPressed: () async {
+                  await Api.createUserseller(context);
+                },
                 icon: Icon(
                   Icons.person_2_outlined,
                   color: Colors.white,
@@ -65,14 +68,14 @@ class _Account_authState extends State<Account_auth> {
                         TextSpan(
                             text: 'Seller',
                             style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white)),
+                              fontWeight: FontWeight.w500,
+                            )),
                       ]),
                 ))),
 
 //////////////Buyer Account btn
         Positioned(
-            bottom: mq.height * .15,
+            bottom: mq.height * .08,
             left: mq.width * .05,
             width: mq.width * .9,
             height: mq.height * .06,
@@ -81,9 +84,9 @@ class _Account_authState extends State<Account_auth> {
                     backgroundColor: const Color(0xFF4C53A5),
                     shape: const StadiumBorder(),
                     elevation: 1),
-                onPressed: () {},
-
-                //google icon
+                onPressed: () async {
+                  await Api.createUserbuyer();
+                },
                 icon: Icon(
                   Icons.sell_outlined,
                   color: Colors.white,

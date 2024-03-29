@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/AddPage.dart';
 
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/CartPage.dart';
 
@@ -78,16 +79,21 @@ class _SidebarState extends State<Sidebar> {
               ],
             ),
             decoration: BoxDecoration(
-              color: Colors.redAccent,
+              color: Color(0xFF4C53A5),
             ),
           ),
-          // ListTile(
-          //   leading: Icon(Icons.my_library_books),
-          //   title: Text('My Cart'),
-          //   onTap: () => CartPage(),
-          // ),
           ListTile(
             leading: Icon(Icons.add),
+            title: Text('Add Product'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.trolley),
             title: Text('My Cart'),
             onTap: () {
               Navigator.push(

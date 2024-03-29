@@ -2,10 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Cartmodel.dart';
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Categorymodel.dart';
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Productmodel.dart';
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Usermodel.dart';
+import 'package:uuid/uuid.dart';
+
+import 'pages/HomePage.dart';
 
 class Api {
   static FirebaseAuth auth = FirebaseAuth.instance;
@@ -13,21 +17,29 @@ class Api {
   static FirebaseStorage storage = FirebaseStorage.instance;
 // to return current user
   static User get user => auth.currentUser!;
+  static String generatePushid() {
+    var uuid = Uuid();
+    return uuid.v4();
+  }
 
 /////********************************set seller///********************************
-  static Future<void> createUserseller() async {
+  static Future<void> createUserseller(BuildContext context) async {
     final User_seller = Usermodel(
         userimage: user.photoURL.toString(),
         userId: user.uid,
         useremail: user.email.toString(),
         username: user.displayName.toString());
 
-    return await firestore
+    await firestore
         .collection('users')
         .doc('seller')
         .collection(user.uid)
         .doc('profile')
-        .set(User_seller.toJson());
+        .set(User_seller.toJson())
+        .then((value) => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            ));
   }
 
 /////********************************set buyer///********************************
@@ -47,14 +59,13 @@ class Api {
   }
 
   ///********************************set product according to category********************************
-  static Future<void> AddProduct(String category_name, String product_id,
+  static Future<void> AddProduct(Categorymodel category, String product_id,
       String product_name, int product_price) async {
-    final addcategory = Categorymodel(categoryname: category_name);
     final productwithcategory = Productmodel(
         productid: product_id.toString(),
         price: product_price,
         productname: product_name.toString(),
-        category: addcategory.toString());
+        category: category.categoryname);
 
     return await firestore
         .collection('users')
@@ -91,7 +102,7 @@ class Api {
     // Increment cart item count by 1
     int updatedCartItem = currentCartItem + 1;
 
-    // Calculate total payment amount
+    // Calculate total payment amou ygy nt
     int productPrice = 0; // You need to define product price here
     int updatedPaymentAmount = updatedCartItem * productPrice;
 

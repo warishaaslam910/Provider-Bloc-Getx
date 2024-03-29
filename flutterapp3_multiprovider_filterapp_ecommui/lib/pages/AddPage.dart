@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/HomePage.dart';
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/Api.dart';
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Cartmodel.dart';
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Categorymodel.dart';
 
 class AddPage extends StatefulWidget {
   const AddPage({super.key});
@@ -11,7 +13,8 @@ class AddPage extends StatefulWidget {
 class _AddPageState extends State<AddPage> {
   var productnamecontroller = TextEditingController();
   var productpricecontroller = TextEditingController();
-  var productcategory = TextEditingController();
+  var productcategorycontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,17 +38,31 @@ class _AddPageState extends State<AddPage> {
                       ),
                     ),
                   ),
+                  Spacer(),
                   ////////////////////////////////////// Post btn ////////////////////////////
                   InkWell(
                     onTap: () async {
-                      HomePage();
+                      final String product_id = Api.generatePushid();
+                      int productPrice =
+                          int.tryParse(productpricecontroller.text) ?? 0;
+                      try {
+                        String productcategoryname =
+                            productcategorycontroller.text;
+                        Categorymodel product_category =
+                            Categorymodel(categoryname: productcategoryname);
+                        print('Category: $productcategoryname');
+                        Api.AddProduct(product_category, product_id,
+                            productnamecontroller.text, productPrice);
+                        print('Product added successfully!');
+                      } catch (e) {
+                        print('Error adding product: $e');
+                      }
                     },
                     child: Text(
                       "POST",
                       style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ),
-                  Spacer(),
                 ],
               ),
             ),
@@ -98,7 +115,7 @@ class _AddPageState extends State<AddPage> {
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: TextField(
-                      controller: productpricecontroller,
+                      controller: productcategorycontroller,
                       minLines: 2,
                       maxLines: 20,
                       decoration: InputDecoration(

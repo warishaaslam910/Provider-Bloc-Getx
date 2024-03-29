@@ -1,3 +1,5 @@
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Categorymodel.dart';
+
 class Productmodel {
   Productmodel({
     // required this.quantity,
@@ -10,7 +12,7 @@ class Productmodel {
   late final String productid;
   late final int price;
   late final String productname;
-  late final String category;
+  late final String category; //take instance of category model
 
   Productmodel.fromJson(Map<String, dynamic> json) {
     // quantity = json['quantity'];
