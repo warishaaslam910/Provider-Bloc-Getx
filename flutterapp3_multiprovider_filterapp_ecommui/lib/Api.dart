@@ -112,4 +112,19 @@ class Api {
       'paymentamount': updatedPaymentAmount,
     });
   }
+
+  /////******************************** get products of seller********************************
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllProducts() {
+    // return firestore
+    //     .collection('users/seller/user.uid/profile/product/product_id')
+    //     .snapshots();
+
+    return firestore
+        .collection('users')
+        .doc('seller')
+        .collection(user.uid)
+        .doc('profile')
+        .collection('products')
+        .snapshots();
+  }
 }

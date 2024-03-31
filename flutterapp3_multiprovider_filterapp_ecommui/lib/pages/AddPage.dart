@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/Api.dart';
-import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Cartmodel.dart';
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Categorymodel.dart';
 
 class AddPage extends StatefulWidget {
