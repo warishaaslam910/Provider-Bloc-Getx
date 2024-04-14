@@ -85,7 +85,7 @@ class _Account_authState extends State<Account_auth> {
                     shape: const StadiumBorder(),
                     elevation: 1),
                 onPressed: () async {
-                  await Api.createUserbuyer();
+                  await Api.createUserbuyer(context);
                 },
                 icon: Icon(
                   Icons.sell_outlined,

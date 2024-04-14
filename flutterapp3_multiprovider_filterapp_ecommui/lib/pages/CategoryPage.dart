@@ -1,11 +1,15 @@
+//////duplicate
 import 'package:flutter/material.dart';
 
+import '../models/Productmodel.dart';
 import '../widgets/ItemsWidget.dart';
 import '../widgets/RangeSliderWidget.dart';
 /////////range according to category
 
 class CategoryPage extends StatefulWidget {
-  const CategoryPage({super.key});
+  final Productmodel? newProduct;
+
+  const CategoryPage({Key? key, required this.newProduct}) : super(key: key);
 
   @override
   State<CategoryPage> createState() => _CategoryPageState();
@@ -53,7 +57,9 @@ class _CategoryPageState extends State<CategoryPage> {
                         color: Color(0xFF4C53A5)),
                   ),
                 ),
-                ItemsWidget(),
+                ItemsWidget(
+                  newProduct: widget.newProduct,
+                ),
               ],
             ),
           ),

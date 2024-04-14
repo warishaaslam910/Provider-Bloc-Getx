@@ -1,3 +1,5 @@
+///// duplicate ////
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/AddPage.dart';
@@ -5,9 +7,19 @@ import 'package:flutterapp3_multiprovider_filterapp_ecommui/widgets/CategoriesWi
 
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/widgets/SellerItemsWidget.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+import '../models/Productmodel.dart';
 
+class SellerProductsPage extends StatefulWidget {
+  //SellerProductsPage({Key? key}) : super(key: key);
+
+  final Productmodel newProduct;
+  SellerProductsPage({Key? key, required this.newProduct}) : super(key: key);
+
+  @override
+  State<SellerProductsPage> createState() => _SellerProductsPageState();
+}
+
+class _SellerProductsPageState extends State<SellerProductsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +98,9 @@ class HomePage extends StatelessWidget {
                 ),
                 //////////////// categories widget/////////
                 ///
-                CategoriesWidget(),
+                CategoriesWidget(
+                  newProduct: widget.newProduct,
+                ),
 
                 //ITEMS
 

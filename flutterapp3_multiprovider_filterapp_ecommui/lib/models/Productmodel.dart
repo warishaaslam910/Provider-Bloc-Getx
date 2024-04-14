@@ -1,5 +1,3 @@
-import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Categorymodel.dart';
-
 class Productmodel {
   Productmodel({
     // required this.quantity,

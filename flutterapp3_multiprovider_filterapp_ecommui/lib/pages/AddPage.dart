@@ -1,9 +1,13 @@
+//////duplicate
+
 import 'package:flutter/material.dart';
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/Api.dart';
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Categorymodel.dart';
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/models/Productmodel.dart';
+import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/HomePage.dart';
 
 class AddPage extends StatefulWidget {
-  const AddPage({super.key});
+  const AddPage({Key? key}) : super(key: key);
 
   @override
   State<AddPage> createState() => _AddPageState();
@@ -51,7 +55,21 @@ class _AddPageState extends State<AddPage> {
                             Categorymodel(categoryname: productcategoryname);
                         print('Category: $productcategoryname');
                         Api.AddProduct(product_category, product_id,
-                            productnamecontroller.text, productPrice);
+                                productnamecontroller.text, productPrice)
+                            .then((value) {
+                          Productmodel newProduct = Productmodel(
+                            productid: product_id,
+                            price: productPrice,
+                            productname: productnamecontroller.text,
+                            category: productcategoryname,
+                          );
+
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      HomePage(newProduct: newProduct)));
+                        });
                         print('Product added successfully!');
                       } catch (e) {
                         print('Error adding product: $e');

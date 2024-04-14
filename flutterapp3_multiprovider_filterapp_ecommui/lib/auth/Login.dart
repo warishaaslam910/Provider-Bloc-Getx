@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterapp3_multiprovider_filterapp_ecommui/auth/Account_auth.dart';
 
-import 'package:flutterapp3_multiprovider_filterapp_ecommui/pages/Mode.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class Login extends StatefulWidget {
