@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "587132683367",
+    "project_id": "pracfirebase2-6ce6d",
+    "storage_bucket": "pracfirebase2-6ce6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587132683367:android:8f761cddd4b88e21d240c2",
+        "android_client_info": {
+          "package_name": "com.example.flutterapp4_providerapi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAFCmeXTRR3LjMztnIG6Yrc8UTKdT4gTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -19,8 +19,6 @@
 //   static FirebaseStorage storage = FirebaseStorage.instance;
 
 //   static Productmodel? newProduct;
-//   static StreamController<List<Productmodel>> productStreamcontroller =
-//       StreamController<List<Productmodel>>();
 
 //   //static StreamController? productStreamcontroller;
 // // to return current user
@@ -48,24 +46,40 @@
 //               context,
 //               MaterialPageRoute(
 //                   builder: (context) => HomePage(
-//                       productStreamcontroller: Api.productStreamcontroller)),
+//                         newProduct: newProduct,
+//                         category: '',
+//                       )),
 //             ));
 //   }
 
-// /////********************************set buyer///********************************
-//   static Future<void> createUserbuyer() async {
+//   static Future<void> createUserbuyer(BuildContext context) async {
 //     final User_buyer = Usermodel(
 //         userimage: user.photoURL.toString(),
 //         userId: user.uid,
 //         useremail: user.email.toString(),
 //         username: user.displayName.toString());
 
-//     return await firestore
-//         .collection('users')
-//         .doc('buyer')
-//         .collection(user.uid)
-//         .doc('profile')
-//         .set(User_buyer.toJson());
+//     try {
+//       await firestore
+//           .collection('users')
+//           .doc('buyer')
+//           .collection(user.uid)
+//           .doc('profile')
+//           .set(User_buyer.toJson());
+//       Navigator.push(
+//         context,
+//         MaterialPageRoute(
+//             builder: (context) => HomePage(
+//                   newProduct: newProduct,
+//                   category: '',
+//                 )),
+//       );
+//     } catch (e) {
+//       print('Error creating buyer: $e');
+//       ScaffoldMessenger.of(context).showSnackBar(
+//         SnackBar(content: Text('Failed to create buyer. Please try again.')),
+//       );
+//     }
 //   }
 
 //   ///********************************set product according to category********************************
@@ -137,9 +151,10 @@
 //         .collection('products')
 //         .snapshots();
 //   }
+//   /////*****************************/
 // }
 
-////duplicate////
+////add products to cart
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -189,11 +204,11 @@ class Api {
               MaterialPageRoute(
                   builder: (context) => HomePage(
                         newProduct: newProduct,
+                        category: '',
                       )),
             ));
   }
 
-/////********************************set buyer///********************************
   static Future<void> createUserbuyer(BuildContext context) async {
     final User_buyer = Usermodel(
         userimage: user.photoURL.toString(),
@@ -201,19 +216,27 @@ class Api {
         useremail: user.email.toString(),
         username: user.displayName.toString());
 
-    await firestore
-        .collection('users')
-        .doc('buyer')
-        .collection(user.uid)
-        .doc('profile')
-        .set(User_buyer.toJson())
-        .then((value) => Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => HomePage(
-                        newProduct: newProduct,
-                      )),
-            ));
+    try {
+      await firestore
+          .collection('users')
+          .doc('buyer')
+          .collection(user.uid)
+          .doc('profile')
+          .set(User_buyer.toJson());
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => HomePage(
+                  newProduct: newProduct,
+                  category: '',
+                )),
+      );
+    } catch (e) {
+      print('Error creating buyer: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to create buyer. Please try again.')),
+      );
+    }
   }
 
   ///********************************set product according to category********************************
@@ -284,5 +307,50 @@ class Api {
         .doc('profile')
         .collection('products')
         .snapshots();
+  }
+
+  /////*****************************/
+  ///
+  static Future<void> addProductToCart(
+      String cartprodname, int cartprodprice) async {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser == null) {
+      throw Exception('No User');
+    }
+    final userId = currentUser.uid;
+
+    final cartItem = {
+      'cartprodname': cartprodname,
+      'cartprodprice': cartprodprice,
+      'quantity': 1,
+    };
+
+    final cartRef = firestore
+        .collection('users')
+        .doc('buyer')
+        .collection(userId)
+        .doc('cart');
+    final cartsnapshot = await cartRef.get();
+    if (!cartsnapshot.exists) {
+      await cartRef.set({
+        'items': [cartItem]
+      });
+    } else {
+      List<dynamic> items = cartsnapshot.data()!['items'];
+      bool itemexist = false;
+      for (var item in items) {
+        if (item['cartprodname'] == cartprodname) {
+          item['quantity'] += 1;
+          itemexist = true;
+          break;
+        }
+      }
+      if (!itemexist) {
+        items.add(cartItem);
+      }
+      await cartRef.update({'items': items});
+    }
+
+    ///else
   }
 }

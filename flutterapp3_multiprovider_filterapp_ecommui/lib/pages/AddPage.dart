@@ -67,8 +67,10 @@ class _AddPageState extends State<AddPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      HomePage(newProduct: newProduct)));
+                                  builder: (context) => HomePage(
+                                        newProduct: newProduct,
+                                        category: '',
+                                      )));
                         });
                         print('Product added successfully!');
                       } catch (e) {
