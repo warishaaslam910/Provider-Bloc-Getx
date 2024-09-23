@@ -14,6 +14,7 @@ class Googlelogin {
         accessToken: googleauth?.accessToken,
       );
       final Usercred = _auth.signInWithCredential(cred);
+
       if (Usercred != null) {
         Navigator.push(context, MaterialPageRoute(builder: (_) => Ui()));
       }

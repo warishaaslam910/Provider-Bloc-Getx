@@ -9,8 +9,6 @@
 //   });
 // }
 
-import 'package:meta/meta.dart';
-
 class model {
   final String titles;
 

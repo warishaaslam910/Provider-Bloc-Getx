@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluterapp5_apiprovider/Ui.dart';
 import 'package:fluterapp5_apiprovider/auth/Googlelogin.dart';
 import 'package:fluterapp5_apiprovider/auth/Signup.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +56,13 @@ class _LoginState extends State<Login> {
                             final credential = await FirebaseAuth.instance
                                 .signInWithEmailAndPassword(
                                     email: loginemailcont.text,
-                                    password: loginpasscont.text);
+                                    password: loginpasscont.text)
+                                .then((value) => {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: ((context) => Ui())))
+                                    });
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'user-not-found') {
                               print('No user found for that email.');

@@ -25,7 +25,7 @@
 import 'dart:convert';
 
 import 'package:fluterapp5_apiprovider/model.dart';
-import 'package:flutter/material.dart';
+
 import 'package:http/http.dart' as http;
 
 class Services {
@@ -33,10 +33,12 @@ class Services {
     const url = 'https://www.healthcare.gov/api/index.json';
     final uri = Uri.parse(url);
     final resp = await http.get(uri);
+    print(
+        ' #######################API Response Status Code: ${resp.statusCode}');
     if (resp.statusCode == 200) {
       final json = jsonDecode(resp.body)
           as List<dynamic>; // Cast to List<dynamic> to ensure proper decoding
-
+      print('API Response Data: $json');
       final todos = json.map((e) {
         return model(
             titles: e['title']); // Access 'title' from each item in the list

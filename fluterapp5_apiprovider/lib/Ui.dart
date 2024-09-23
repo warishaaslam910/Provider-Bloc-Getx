@@ -165,9 +165,73 @@
 //   }
 // }
 
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'package:fluterapp5_apiprovider/Providerclass/todo_provider.dart';
+
+// class Ui extends StatefulWidget {
+//   const Ui({super.key});
+
+//   @override
+//   State<Ui> createState() => _UiState();
+// }
+
+// class _UiState extends State<Ui> {
+//   @override
+//   void initState() {
+//     super.initState();
+//     WidgetsBinding.instance.addPostFrameCallback((_) {
+//       Provider.of<todo_provider>(context, listen: false).getall();
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Column(
+//         children: [
+//           // Title Bar
+//           Container(
+//             height: 80, // Set a fixed height to avoid unbounded height issue
+//             child: Consumer<todo_provider>(
+//               builder: (context, value, child) {
+//                 return ListView.builder(
+//                   scrollDirection: Axis.horizontal,
+//                   itemCount: value.todos.length,
+//                   itemBuilder: (context, index) {
+//                     final todo = value.todos[index];
+//                     print(todo.titles);
+//                     return Container(
+//                       width: 100,
+//                       padding: EdgeInsets.symmetric(horizontal: 8.0),
+//                       child: Center(
+//                         // Center the text inside the container
+//                         child: Text(
+//                           todo.titles,
+//                           style: TextStyle(
+//                             fontWeight: FontWeight.bold,
+//                             color: Colors.black,
+//                           ),
+//                         ),
+//                       ),
+//                     );
+//                   },
+//                 );
+//               },
+//             ),
+//           ),
+
+//           // Placeholder for other content
+//         ],
+//       ),
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:fluterapp5_apiprovider/Providerclass/todo_provider.dart';
+
+import 'Providerclass/todo_provider.dart'; // Corrected import path
 
 class Ui extends StatefulWidget {
   const Ui({super.key});
@@ -181,7 +245,8 @@ class _UiState extends State<Ui> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<todo_provider>(context, listen: false).getall();
+      Provider.of<todo_provider>(context, listen: false)
+          .getall(); // Corrected class name
     });
   }
 
@@ -192,21 +257,44 @@ class _UiState extends State<Ui> {
         children: [
           // Title Bar
           Container(
-            height: 80, // Set a fixed height to avoid unbounded height issue
+            height: 80, // Fixed height for the horizontal ListView
             child: Consumer<todo_provider>(
-              builder: (context, value, child) {
+              builder: (context, todoProvider, child) {
+                if (todoProvider.todos.isEmpty) {
+                  // Show loading indicator if data is still loading
+                  return Center(child: CircularProgressIndicator());
+                }
+
                 return ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: value.todos.length,
+                  itemCount: todoProvider.todos.length,
                   itemBuilder: (context, index) {
-                    final todo = value.todos[index];
+                    final todo = todoProvider.todos[index];
+
+                    // Check if titles is not null
+                    if (todo.titles == null || todo.titles.isEmpty) {
+                      return Container(
+                        width: 100,
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Center(
+                          child: Text(
+                            'No Title', // Default text for missing titles
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  Colors.red, // Different color for visibility
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+
                     return Container(
                       width: 100,
                       padding: EdgeInsets.symmetric(horizontal: 8.0),
                       child: Center(
-                        // Center the text inside the container
                         child: Text(
-                          todo.titles,
+                          todo.titles, // Display the title
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
@@ -221,9 +309,6 @@ class _UiState extends State<Ui> {
           ),
 
           // Placeholder for other content
-          Expanded(
-            child: Center(child: Text('Other content goes here')),
-          ),
         ],
       ),
     );
