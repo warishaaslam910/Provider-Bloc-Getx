@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp_7/Apptheme.dart';
 
 class Categories extends StatefulWidget {
   const Categories({super.key});
@@ -8,7 +9,7 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
-  List foods = ['Pizza', 'Beverages', 'Burger', 'Snacks'];
+  List foods = ['Pizza', 'Beverages', 'Burger', 'Snacks', 'BBQ', 'Dessert'];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,7 +28,7 @@ class _CategoriesState extends State<Categories> {
                     margin: EdgeInsets.only(left: 15),
                     padding: EdgeInsetsDirectional.symmetric(vertical: 5),
                     decoration: BoxDecoration(
-                      color: Colors.pink,
+                      color: AppTheme.primaryColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Column(

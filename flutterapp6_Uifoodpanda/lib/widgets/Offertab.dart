@@ -1,205 +1,6 @@
-// import 'package:flutter/material.dart';
-
-// class Offertab extends StatefulWidget {
-//   const Offertab({super.key});
-
-//   @override
-//   State<Offertab> createState() => _OffertabState();
-// }
-
-// class _OffertabState extends State<Offertab> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       color: Color.fromARGB(255, 166, 165, 173),
-//       child: Column(
-//         children: [
-//           GridView.count(
-
-//             crossAxisCount: 2,
-//             crossAxisSpacing: 10,
-//             mainAxisSpacing: 10,
-
-//             children: <Widget>[
-//               Container(
-//                 height: 200,
-//                 padding: const EdgeInsets.all(8),
-//                 color: Colors.white,
-//                 child: Stack(
-//                   children: [
-//                     Image(image: AssetImage('')),
-//                     Row(
-//                       children: [
-//                         Text(
-//                           'Food Delivery',
-//                           style: TextStyle(fontWeight: FontWeight.bold),
-//                         ),
-//                         Text(
-//                           'Enter Code',
-//                           style: TextStyle(fontWeight: FontWeight.bold),
-//                         )
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//               Container(
-//                 height: 200,
-//                 padding: const EdgeInsets.all(8),
-//                 color: Colors.white,
-//                 child: Stack(
-//                   children: [
-//                     Image(image: AssetImage('asset/images/foodapp-1.jpg')),
-//                     Row(
-//                       children: [
-//                         Text(
-//                           'Food Delivery',
-//                           style: TextStyle(fontWeight: FontWeight.bold),
-//                         ),
-//                         Text(
-//                           'Enter Code',
-//                           style: TextStyle(fontWeight: FontWeight.bold),
-//                         )
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//               ),
-
-//               ///////////////////////////
-//               Container(
-//                 height: 100,
-//                 padding: const EdgeInsets.all(8),
-//                 color: Colors.white,
-//                 child: Stack(
-//                   children: [
-//                     Image(image: AssetImage('')),
-//                     Row(
-//                       children: [
-//                         Text(
-//                           'Food Delivery',
-//                           style: TextStyle(fontWeight: FontWeight.bold),
-//                         ),
-//                         Text(
-//                           'Enter Code',
-//                           style: TextStyle(fontWeight: FontWeight.bold),
-//                         )
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//               /////////////////////////////////
-//               Container(
-//                 height: 100,
-//                 padding: const EdgeInsets.all(8),
-//                 color: Colors.white,
-//                 child: Stack(
-//                   children: [
-//                     Image(image: AssetImage('')),
-//                     Row(
-//                       children: [
-//                         Text(
-//                           'Food Delivery',
-//                           style: TextStyle(fontWeight: FontWeight.bold),
-//                         ),
-//                         Text(
-//                           'Enter Code',
-//                           style: TextStyle(fontWeight: FontWeight.bold),
-//                         )
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//               )
-//             ],
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
-////////////////////////without images//////////////
-// import 'package:flutter/material.dart';
-// import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-
-// class Offertab extends StatefulWidget {
-//   const Offertab({super.key});
-
-//   @override
-//   State<Offertab> createState() => _OffertabState();
-// }
-
-// class _OffertabState extends State<Offertab> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//         width: double.infinity,
-//         color: Color.fromARGB(255, 228, 227, 235),
-//         child: Padding(
-//           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-//           child: Column(
-//             children: [
-//               StaggeredGrid.count(
-//                 crossAxisCount: 4,
-//                 crossAxisSpacing: 8,
-//                 mainAxisSpacing: 8,
-//                 children: [
-//                   StaggeredGridTile.count(
-//                       crossAxisCellCount: 2,
-//                       mainAxisCellCount: 2.1,
-//                       child: Container(
-//                         decoration: BoxDecoration(
-//                             color: Colors.white,
-//                             borderRadius: BorderRadius.circular(8),
-//                             border:
-//                                 Border.all(width: 0.5, color: Colors.black26)),
-//                       )),
-
-//                   /////////////////////////
-//                   StaggeredGridTile.count(
-//                       crossAxisCellCount: 2,
-//                       mainAxisCellCount: 2.1,
-//                       child: Container(
-//                         decoration: BoxDecoration(
-//                             color: Colors.white,
-//                             borderRadius: BorderRadius.circular(8),
-//                             border:
-//                                 Border.all(width: 0.5, color: Colors.black26)),
-//                       )),
-
-//                   ///////////////////////
-//                   StaggeredGridTile.count(
-//                       crossAxisCellCount: 2,
-//                       mainAxisCellCount: 1.05,
-//                       child: Container(
-//                         decoration: BoxDecoration(
-//                             color: Colors.white,
-//                             borderRadius: BorderRadius.circular(8),
-//                             border:
-//                                 Border.all(width: 0.5, color: Colors.black26)),
-//                       )),
-//                   ////////////////////////
-//                   StaggeredGridTile.count(
-//                       crossAxisCellCount: 2,
-//                       mainAxisCellCount: 1.05,
-//                       child: Container(
-//                         decoration: BoxDecoration(
-//                             color: Colors.white,
-//                             borderRadius: BorderRadius.circular(8),
-//                             border:
-//                                 Border.all(width: 0.5, color: Colors.black26)),
-//                       ))
-//                 ],
-//               )
-//             ],
-//           ),
-//         ));
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutterapp_7/Apptheme.dart';
 
 class Offertab extends StatefulWidget {
   const Offertab({super.key});
@@ -213,7 +14,7 @@ class _OffertabState extends State<Offertab> {
   Widget build(BuildContext context) {
     return Container(
         width: double.infinity,
-        color: Color.fromARGB(255, 228, 227, 235),
+        color: AppTheme.backgroundColor,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
           child: Column(
@@ -228,7 +29,7 @@ class _OffertabState extends State<Offertab> {
                       mainAxisCellCount: 2.1,
                       child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: AppTheme.accentColor,
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
                                   width: 0.5, color: Colors.black26)),
@@ -280,7 +81,7 @@ class _OffertabState extends State<Offertab> {
                       mainAxisCellCount: 2.1,
                       child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: AppTheme.accentColor,
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
                                   width: 0.5, color: Colors.black26)),
@@ -316,7 +117,7 @@ class _OffertabState extends State<Offertab> {
                                   padding: EdgeInsets.all(8),
                                   child: Image.asset(
                                     'asset/images/pandamart (1).png',
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.contain,
                                     height: 100,
                                   ),
                                 ),
@@ -330,7 +131,7 @@ class _OffertabState extends State<Offertab> {
                       mainAxisCellCount: 1.05,
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: AppTheme.accentColor,
                             borderRadius: BorderRadius.circular(8),
                             border:
                                 Border.all(width: 0.5, color: Colors.black26)),
@@ -353,7 +154,15 @@ class _OffertabState extends State<Offertab> {
                                     ),
                                   ),
                                   Text(
-                                    'Top brands to your door',
+                                    'Top brands to',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Text(
+                                    'your door',
                                     style: TextStyle(
                                       fontSize: 12,
                                     ),
@@ -383,7 +192,7 @@ class _OffertabState extends State<Offertab> {
                       mainAxisCellCount: 1.05,
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: AppTheme.accentColor,
                             borderRadius: BorderRadius.circular(8),
                             border:
                                 Border.all(width: 0.5, color: Colors.black26)),
@@ -406,7 +215,7 @@ class _OffertabState extends State<Offertab> {
                                     ),
                                   ),
                                   Text(
-                                    'Self-collect for 50%',
+                                    'Self-collect for',
                                     style: TextStyle(
                                       fontSize: 12,
                                     ),
@@ -427,8 +236,8 @@ class _OffertabState extends State<Offertab> {
                                   padding: EdgeInsets.all(8),
                                   child: Image.asset(
                                     'asset/images/pick_up.png',
-                                    fit: BoxFit.contain,
-                                    height: 100,
+                                    fit: BoxFit.cover,
+                                    height: 80,
                                   ),
                                 ),
                               ),
@@ -442,7 +251,7 @@ class _OffertabState extends State<Offertab> {
                       mainAxisCellCount: 1.05,
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: AppTheme.accentColor,
                             borderRadius: BorderRadius.circular(8),
                             border:
                                 Border.all(width: 0.5, color: Colors.black26)),
@@ -465,7 +274,13 @@ class _OffertabState extends State<Offertab> {
                                     ),
                                   ),
                                   Text(
-                                    'Plan events with ease',
+                                    'Plan events',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Text(
+                                    'with ease',
                                     style: TextStyle(
                                       fontSize: 12,
                                     ),
@@ -473,17 +288,19 @@ class _OffertabState extends State<Offertab> {
                                 ],
                               ),
                             ),
-                            // Align(
-                            //   alignment: Alignment.bottomRight,
-                            //   child: Padding(
-                            //     padding: EdgeInsets.all(8),
-                            //     child: Image.asset(
-                            //       'asset/images/pick_up.png',
-                            //       fit: BoxFit.cover,
-                            //       height: 100,
-                            //     ),
-                            //   ),
-                            // ),
+                            Expanded(
+                              child: Align(
+                                alignment: Alignment.bottomRight,
+                                child: Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Image.asset(
+                                    'asset/images/cocktail-8.png',
+                                    fit: BoxFit.contain,
+                                    height: 100,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       )),
@@ -493,14 +310,14 @@ class _OffertabState extends State<Offertab> {
                       mainAxisCellCount: 1.05,
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: AppTheme.accentColor,
                             borderRadius: BorderRadius.circular(8),
                             border:
                                 Border.all(width: 0.5, color: Colors.black26)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.symmetric(
                                 horizontal: 15,
                                 vertical: 10,
@@ -516,7 +333,13 @@ class _OffertabState extends State<Offertab> {
                                     ),
                                   ),
                                   Text(
-                                    'Send parcels in a tap',
+                                    'Send parcels in',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  Text(
+                                    'a tap',
                                     style: TextStyle(
                                       fontSize: 14,
                                     ),
@@ -532,7 +355,7 @@ class _OffertabState extends State<Offertab> {
                                   child: Image.asset(
                                     'asset/images/pandago.png',
                                     fit: BoxFit.contain,
-                                    height: 120,
+                                    height: 80,
                                   ),
                                 ),
                               ),
